@@ -1,8 +1,5 @@
 package org.litespring.test.v4;
 
-import java.lang.reflect.Field;
-import java.util.LinkedList;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.litespring.beans.factory.annotation.AutowiredFieldElement;
@@ -16,6 +13,12 @@ import org.litespring.dao.v4.AccountDao;
 import org.litespring.dao.v4.ItemDao;
 import org.litespring.service.v4.PetStoreService;
 
+import java.lang.reflect.Field;
+import java.util.LinkedList;
+
+/**
+ * 7. 测试注入的过程，其中 InjectionMetadata 是手工生成的
+ */
 public class InjectionMetadataTest {
 
 	@Test

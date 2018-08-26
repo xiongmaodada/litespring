@@ -4,7 +4,8 @@ import java.util.List;
 
 public interface ConfigurableBeanFactory extends AutowireCapableBeanFactory {	
 	void setBeanClassLoader(ClassLoader beanClassLoader);
-	ClassLoader getBeanClassLoader();	
+	ClassLoader getBeanClassLoader();
+	// 加入postProcessor
 	void addBeanPostProcessor(BeanPostProcessor postProcessor);
 	List<BeanPostProcessor> getBeanPostProcessors();
 }

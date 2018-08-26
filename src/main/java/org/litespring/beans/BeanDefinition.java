@@ -22,6 +22,7 @@ public interface BeanDefinition {
 	public boolean hasConstructorArgumentValues();
 	
 	public Class<?> resolveBeanClass(ClassLoader classLoader) throws ClassNotFoundException;
+	// 在调用getBeanClass 前一定要先调用下resolveBeanClass，确保class存在，否则将报异常
 	public Class<?> getBeanClass() throws IllegalStateException ;
 	public boolean hasBeanClass();
 }

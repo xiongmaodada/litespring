@@ -160,6 +160,7 @@ public abstract class ReflectionUtils {
 		}
 		throw new UndeclaredThrowableException(ex);
 	}
+	// 将field置为可以访问
 	public static void makeAccessible(Field field) {
 		if ((!Modifier.isPublic(field.getModifiers()) ||
 				!Modifier.isPublic(field.getDeclaringClass().getModifiers()) ||

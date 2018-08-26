@@ -1,5 +1,12 @@
 package org.litespring.beans.factory.annotation;
 
+import org.litespring.beans.BeansException;
+import org.litespring.beans.factory.BeanCreationException;
+import org.litespring.beans.factory.config.AutowireCapableBeanFactory;
+import org.litespring.beans.factory.config.InstantiationAwareBeanPostProcessor;
+import org.litespring.core.annotation.AnnotationUtils;
+import org.litespring.util.ReflectionUtils;
+
 import java.lang.annotation.Annotation;
 import java.lang.reflect.AccessibleObject;
 import java.lang.reflect.Field;
@@ -9,14 +16,9 @@ import java.util.LinkedHashSet;
 import java.util.LinkedList;
 import java.util.Set;
 
-import org.litespring.beans.BeansException;
-import org.litespring.beans.factory.BeanCreationException;
-import org.litespring.beans.factory.config.AutowireCapableBeanFactory;
-import org.litespring.beans.factory.config.InstantiationAwareBeanPostProcessor;
-import org.litespring.core.annotation.AnnotationUtils;
-import org.litespring.util.ReflectionUtils;
-
-
+/**
+ * 为了存储从class中读取的具体的autoware信息
+ */
 public class AutowiredAnnotationProcessor implements InstantiationAwareBeanPostProcessor  {
 	
 	private AutowireCapableBeanFactory beanFactory;
@@ -78,6 +80,7 @@ public class AutowiredAnnotationProcessor implements InstantiationAwareBeanPostP
 	
 	private Annotation findAutowiredAnnotation(AccessibleObject ao) {
 		for (Class<? extends Annotation> type : this.autowiredAnnotationTypes) {
+			// 获取ao对象上的 type类型的注解
 			Annotation ann = AnnotationUtils.getAnnotation(ao, type);
 			if (ann != null) {
 				return ann;

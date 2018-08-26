@@ -1,11 +1,11 @@
 package org.litespring.beans.factory.annotation;
 
-import java.lang.reflect.Field;
-
 import org.litespring.beans.factory.BeanCreationException;
 import org.litespring.beans.factory.config.AutowireCapableBeanFactory;
 import org.litespring.beans.factory.config.DependencyDescriptor;
 import org.litespring.util.ReflectionUtils;
+
+import java.lang.reflect.Field;
 
 public class AutowiredFieldElement extends InjectionElement {
 	boolean required;
@@ -23,13 +23,13 @@ public class AutowiredFieldElement extends InjectionElement {
 		
 		Field field = this.getField();
 		try {
-			
+			// 该部分参考 测试用例6 部分的代码
 			DependencyDescriptor desc = new DependencyDescriptor(field, this.required);
 								
 			Object value = factory.resolveDependency(desc);
 			
 			if (value != null) {
-				
+				// 将field置为可以访问
 				ReflectionUtils.makeAccessible(field);
 				field.set(target, value);
 			}

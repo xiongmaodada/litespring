@@ -1,11 +1,11 @@
 package org.litespring.beans.factory.support;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.litespring.beans.BeanDefinition;
 import org.litespring.beans.ConstructorArgument;
 import org.litespring.beans.PropertyValue;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class GenericBeanDefinition implements BeanDefinition {
 	private String id;
@@ -42,6 +42,7 @@ public class GenericBeanDefinition implements BeanDefinition {
 		this.beanClass = resolvedClass;
 		return resolvedClass;
 	}
+	// 在调用getBeanClass 前一定要先调用下resolveBeanClass，确保class存在，否则将报异常
 	public Class<?> getBeanClass() throws IllegalStateException {
 		if(this.beanClass == null){
 			throw new IllegalStateException(

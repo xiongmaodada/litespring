@@ -1,13 +1,5 @@
 package org.litespring.beans.factory.support;
 
-import java.beans.BeanInfo;
-import java.beans.Introspector;
-import java.beans.PropertyDescriptor;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-import java.util.concurrent.ConcurrentHashMap;
-
 import org.litespring.beans.BeanDefinition;
 import org.litespring.beans.PropertyValue;
 import org.litespring.beans.SimpleTypeConverter;
@@ -17,6 +9,14 @@ import org.litespring.beans.factory.config.ConfigurableBeanFactory;
 import org.litespring.beans.factory.config.DependencyDescriptor;
 import org.litespring.beans.factory.config.InstantiationAwareBeanPostProcessor;
 import org.litespring.util.ClassUtils;
+
+import java.beans.BeanInfo;
+import java.beans.Introspector;
+import java.beans.PropertyDescriptor;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Map;
+import java.util.concurrent.ConcurrentHashMap;
 
 public class DefaultBeanFactory extends DefaultSingletonBeanRegistry 
 	implements ConfigurableBeanFactory,BeanDefinitionRegistry{
@@ -130,12 +130,14 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 		return (this.beanClassLoader != null ? this.beanClassLoader : ClassUtils.getDefaultClassLoader());
 	}
     public Object resolveDependency(DependencyDescriptor descriptor) {
-		
+		// 获取依赖字段的类型
 		Class<?> typeToMatch = descriptor.getDependencyType();
 		for(BeanDefinition bd: this.beanDefinitionMap.values()){		
 			//确保BeanDefinition 有Class对象
 			resolveBeanClass(bd);
-			Class<?> beanClass = bd.getBeanClass();			
+			// 在调用getBeanClass之前一定要先调用一下bd.resolveBeanClass(classLoader);
+			Class<?> beanClass = bd.getBeanClass();
+			// 判断beanClass 是否可以给typeToMatch赋值
 			if(typeToMatch.isAssignableFrom(beanClass)){
 				return this.getBean(bd.getID());
 			}
@@ -147,6 +149,7 @@ public class DefaultBeanFactory extends DefaultSingletonBeanRegistry
 			return;
 		} else{
 			try {
+				// 把classname变成class
 				bd.resolveBeanClass(this.getBeanClassLoader());
 			} catch (ClassNotFoundException e) {
 				throw new RuntimeException("can't load class:"+bd.getBeanClassName());
