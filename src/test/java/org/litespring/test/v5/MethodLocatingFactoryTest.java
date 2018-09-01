@@ -1,17 +1,19 @@
 package org.litespring.test.v5;
 
-import java.lang.reflect.Method;
-
-import org.litespring.aop.config.MethodLocatingFactory;
 import org.junit.Assert;
 import org.junit.Test;
+import org.litespring.aop.config.MethodLocatingFactory;
 import org.litespring.beans.factory.support.DefaultBeanFactory;
 import org.litespring.beans.factory.xml.XmlBeanDefinitionReader;
 import org.litespring.core.io.ClassPathResource;
 import org.litespring.core.io.Resource;
 import org.litespring.tx.TransactionManager;
 
+import java.lang.reflect.Method;
 
+/**
+ * 2. 测试是否能 定位到切面类的某个方法
+ */
 public class MethodLocatingFactoryTest {
 	@Test
 	public void testGetMethod() throws Exception{

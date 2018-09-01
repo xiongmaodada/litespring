@@ -1,16 +1,17 @@
 package org.litespring.test.v5;
 
-import java.lang.reflect.Method;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.litespring.aop.MethodMatcher;
 import org.litespring.aop.aspectj.AspectJExpressionPointcut;
-import org.litespring.dao.v5.AccountDao;
 import org.litespring.service.v5.PetStoreService;
 
+import java.lang.reflect.Method;
 
 
+/**
+ * 1.测试 切点表达式是否能匹配到 业务类的某个method
+ */
 public class PointcutTest {
 	@Test
 	public void testPointcut() throws Exception{
