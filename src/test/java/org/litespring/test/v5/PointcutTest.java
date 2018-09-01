@@ -11,6 +11,8 @@ import java.lang.reflect.Method;
 
 /**
  * 1.测试 切点表达式是否能匹配到 业务类的某个method
+ *
+ * 判断某个方法是否能匹配到 表达式，如果匹配到，则返回true，否则返回false
  */
 public class PointcutTest {
 	@Test

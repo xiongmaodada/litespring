@@ -13,6 +13,7 @@ import java.lang.reflect.Method;
 
 /**
  * 2. 测试是否能 定位到切面类的某个方法
+ *  给定方法名和beanname定位到 Method
  */
 public class MethodLocatingFactoryTest {
 	@Test
