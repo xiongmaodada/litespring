@@ -1,7 +1,5 @@
 package org.litespring.test.v5;
 
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -15,8 +13,12 @@ import org.litespring.service.v5.PetStoreService;
 import org.litespring.tx.TransactionManager;
 import org.litespring.util.MessageTracker;
 
+import java.util.List;
 
 
+/**
+ * 5. 利用cglib实现 方法拦截和链式调用
+ */
 public class CglibAopProxyTest {
 		
 	private static AspectJBeforeAdvice beforeAdvice = null;

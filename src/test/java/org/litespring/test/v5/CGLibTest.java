@@ -1,18 +1,16 @@
 package org.litespring.test.v5;
 
 
-import java.lang.reflect.Method;
-
 import org.junit.Test;
 import org.litespring.service.v5.PetStoreService;
 import org.litespring.tx.TransactionManager;
-import org.springframework.cglib.proxy.Callback;
-import org.springframework.cglib.proxy.CallbackFilter;
-import org.springframework.cglib.proxy.Enhancer;
-import org.springframework.cglib.proxy.MethodInterceptor;
-import org.springframework.cglib.proxy.MethodProxy;
-import org.springframework.cglib.proxy.NoOp;
+import org.springframework.cglib.proxy.*;
 
+import java.lang.reflect.Method;
+
+/**
+ * 4. 利用 cglib实现方法拦截
+ */
 public class CGLibTest {
 	
 	@Test
@@ -21,7 +19,7 @@ public class CGLibTest {
 		Enhancer enhancer = new Enhancer();
 		
         enhancer.setSuperclass(PetStoreService.class);
-        
+        // 设置拦截器
         enhancer.setCallback( new TransactionInterceptor() );
         PetStoreService petStore = (PetStoreService)enhancer.create();
         petStore.placeOrder();
@@ -42,7 +40,7 @@ public class CGLibTest {
 	    }
 	}
 	
-	
+	// 通过filter 过滤toString方法的拦截
 	@Test 
 	public void  testFilter(){
 		
@@ -75,7 +73,7 @@ public class CGLibTest {
 		public ProxyCallbackFilter() {			
 			
 		}
-		
+		// 选择用第几个拦截器
 		public int accept(Method method) {
 			if(method.getName().startsWith("place")){
 				return 0;

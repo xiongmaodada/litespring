@@ -1,9 +1,5 @@
 package org.litespring.test.v5;
 
-import java.lang.reflect.Method;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.aopalliance.intercept.MethodInterceptor;
 import org.junit.Assert;
 import org.junit.Before;
@@ -16,6 +12,13 @@ import org.litespring.service.v5.PetStoreService;
 import org.litespring.tx.TransactionManager;
 import org.litespring.util.MessageTracker;
 
+import java.lang.reflect.Method;
+import java.util.ArrayList;
+import java.util.List;
+
+/**
+ * 3. 测试 指定次序的链式调用
+ */
 public class ReflectiveMethodInvocationTest  {
 	
 	
