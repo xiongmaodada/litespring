@@ -1,7 +1,5 @@
 package org.litespring.test.v5;
 
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.litespring.aop.aspectj.AspectJBeforeAdvice;
@@ -15,6 +13,11 @@ import org.litespring.beans.factory.config.RuntimeBeanReference;
 import org.litespring.beans.factory.support.DefaultBeanFactory;
 import org.litespring.tx.TransactionManager;
 
+import java.util.List;
+
+/**
+ * 6.测试 BeanDefinition的创建（合成的 BeanDefinition）
+ */
 public class BeanDefinitionTestV5 extends AbstractV5Test{
 
 	@Test

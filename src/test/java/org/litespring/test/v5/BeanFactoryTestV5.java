@@ -1,7 +1,5 @@
 package org.litespring.test.v5;
 
-import java.util.List;
-
 import org.junit.Assert;
 import org.junit.Test;
 import org.litespring.aop.Advice;
@@ -11,8 +9,12 @@ import org.litespring.aop.aspectj.AspectJBeforeAdvice;
 import org.litespring.beans.factory.BeanFactory;
 import org.litespring.tx.TransactionManager;
 
+import java.util.List;
 
 
+/**
+ * 测试 Bean的创建，（Bean是合成bean）
+ */
 public class BeanFactoryTestV5  extends AbstractV5Test{
 	
 	static String expectedExpression = "execution(* org.litespring.service.v5.*.placeOrder(..))";
